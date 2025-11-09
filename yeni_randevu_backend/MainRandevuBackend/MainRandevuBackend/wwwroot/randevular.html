@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoWash - Randevular</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/randevular.css">
+
+</head>
+<body>
+    <div class="randevu-container">
+        <h2>Randevu Oluştur</h2>
+        <form class="randevu-form" id="randevuForm">
+            <input type="text" id="carPlate" placeholder="Araç Plakası" required>
+            <select id="serviceType" required>
+                <option value="">Hizmet Seç</option>
+                <option>İç-Dış Yıkama</option>
+                <option>Detaylı Temizlik</option>
+                <option>Seramik Kaplama</option>
+            </select>
+            <input type="datetime-local" id="appointmentTime" required>
+            <button type="submit" class="randevu-btn">Randevu Al</button>
+        </form>
+
+        <!-- 💡 Randevu listesi -->
+        <div id="randevuList" class="randevu-listesi"></div>
+    </div>
+
+    <!-- Alt menü -->
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='home.html'">🏠<span>Ana Sayfa</span></div>
+        <div class="nav-item active" onclick="window.location.href='randevular.html'">📅<span>Randevular</span></div>
+        <div class="nav-item" onclick="window.location.href='profil.html'">👤<span>Profil</span></div>
+    </div>
+
+    <script src="js/randevular.js"></script>
+</body>
+
+</html>
