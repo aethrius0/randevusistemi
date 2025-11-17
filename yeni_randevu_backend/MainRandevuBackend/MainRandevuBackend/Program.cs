@@ -3,54 +3,54 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ Controller servisleri
+// Controller servisleri
 builder.Services.AddControllers();
 
-// ✅ Swagger (API testleri ve kontrol için)
+//  Swagger (API testleri ve kontrol için)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// ✅ MySQL veritabanı bağlantısı
+// MySQL veritabanı bağlantısı
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
-// ✅ (İstersen Razor Pages'i kaldırabiliriz; şimdilik kalsın)
+//  (İstersen Razor Pages'i kaldırabiliriz; şimdilik kalsın)
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// ✅ Development ortamında Swagger açık olsun
+//  Development ortamında Swagger açık olsun
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// ✅ HTTPS yönlendirmesi (güvenli bağlantı)
+//  HTTPS yönlendirmesi 
 app.UseHttpsRedirection();
 
-// ✅ Statik dosyalar (frontend HTML, CSS, JS için)
+//  Statik dosyalar (frontend HTML, CSS, JS için)
 var defaultFilesOptions = new DefaultFilesOptions();
 defaultFilesOptions.DefaultFileNames.Clear();
 defaultFilesOptions.DefaultFileNames.Add("login.html");
 app.UseDefaultFiles(defaultFilesOptions);
 app.UseStaticFiles();
 
-// ✅ Routing (API endpoint'leri için)
+//  Routing (API endpoint'leri için)
 app.UseRouting();
 
-// ✅ Authorization (şimdilik pasif ama ileride JWT eklenecek)
+//  Authorization (şimdilik pasif ama ileride JWT eklenecek)
 app.UseAuthorization();
 
-// ✅ API Controller'ları haritalandır
+//  API Controller'ları haritalandır
 app.MapControllers();
 
-// ✅ Statik varlıklar ve Razor Pages (opsiyonel)
+//  Statik varlıklar ve Razor Pages (opsiyonel)
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
 
-// ✅ Uygulamayı çalıştır
+//  Uygulamayı çalıştır
 app.Run();

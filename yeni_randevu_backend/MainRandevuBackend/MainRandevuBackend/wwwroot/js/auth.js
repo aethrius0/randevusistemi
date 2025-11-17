@@ -1,4 +1,5 @@
-﻿const API_URL = "/api";
+﻿const API_URL = "https://localhost:7041/api";
+
 const loginForm = document.getElementById("login");
 const registerForm = document.getElementById("register");
 
@@ -8,11 +9,6 @@ const registerSection = document.getElementById("registerForm");
 const errorMessage = document.getElementById("errorMessage");
 const registerError = document.getElementById("registerError");
 const registerSuccess = document.getElementById("registerSuccess");
-
-// --- GEÇİCİ ADMİN BİLGİLERİ (API'yi atlamak için) ---
-const TEMP_ADMIN_EMAIL = "admin@autowash.com";
-const TEMP_ADMIN_PASSWORD = "admin";
-// --------------------------------------------------------
 
 // Form geçişleri
 document.getElementById("toRegister").addEventListener("click", showRegister);
@@ -49,15 +45,6 @@ loginForm.addEventListener("submit", async (e) => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // YENİ EK: Admin Kontrolü
-    if (email === TEMP_ADMIN_EMAIL && password === TEMP_ADMIN_PASSWORD) {
-        // Başarılı Admin Girişi
-        localStorage.setItem("user", JSON.stringify({ email: TEMP_ADMIN_EMAIL, role: "Admin", tempLogin: true }));
-        window.location.href = "home.html";
-        return; // API çağrısını atla
-    }
-
-    // Orijinal API'ye İstek Gönderme Kodu
     try {
         const res = await fetch(`${API_URL}/auth/login`, {
             method: "POST",
@@ -71,7 +58,6 @@ loginForm.addEventListener("submit", async (e) => {
         localStorage.setItem("user", JSON.stringify(data));
         window.location.href = "home.html";
     } catch (err) {
-        // API'den gelen veya ağ hatasını göster
         showMessage(errorMessage, err.message);
     }
 });

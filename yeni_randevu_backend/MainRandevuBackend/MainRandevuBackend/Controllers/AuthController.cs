@@ -16,7 +16,7 @@ namespace MainRandevuBackend.Controllers
             _context = context;
         }
 
-        // ✅ Kayıt ol
+        // Kayıt ol
         [HttpPost("register")]
         public IActionResult Register([FromBody] User user)
         {
@@ -35,7 +35,7 @@ namespace MainRandevuBackend.Controllers
             });
         }
 
-        // ✅ Giriş yap
+        //  Giriş yap
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {

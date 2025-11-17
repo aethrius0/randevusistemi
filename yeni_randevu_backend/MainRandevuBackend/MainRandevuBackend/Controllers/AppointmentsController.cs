@@ -16,7 +16,7 @@ namespace MainRandevuBackend.Controllers
             _context = context;
         }
 
-        // GET: api/Randevu
+        // randevu çekme
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -24,7 +24,7 @@ namespace MainRandevuBackend.Controllers
             return Ok(randevular);
         }
 
-        // POST: api/Randevu
+        // randevu oluşturma
         [HttpPost]
         public IActionResult Create(Appointment appointment)
         {
@@ -33,7 +33,7 @@ namespace MainRandevuBackend.Controllers
             return Ok(appointment);
         }
 
-        // PUT: api/Randevu/5
+        // randevu güncelleme
         [HttpPut("{id}")]
         public IActionResult Update(int id, Appointment updatedAppointment)
         {
@@ -49,7 +49,7 @@ namespace MainRandevuBackend.Controllers
             return Ok(existing);
         }
 
-        // DELETE: api/Randevu/5
+        // randevu silme
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
