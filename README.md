@@ -130,7 +130,8 @@ Backend geliştirirken ve test ortamında kolaylık sağlaması için Swagger UI
 - Request–Response gövdesi canlı gösterilir
 - API çağrıları direkt tarayıcıdan test edilir
 
-<img width="800" alt="Swagger UI" src="https://github.com/user-attachments/assets/efbc69e7-4438-485e-9027-92ef07f66857" />
+<img width="800"  alt="Swagger UI" src="https://github.com/user-attachments/assets/c6c6a92e-0d60-4942-86ff-997c545db323" />
+
 
 #### Frontend ve API Entegrasyonu
 Web tarafı, backend ile şu şekilde haberleşir:
