@@ -68,15 +68,48 @@ public IActionResult Login([FromBody] LoginRequest request)
 ```
 
 #### Veritabanı Sistemi
-Kimlik doğrulama sistemi için MySQL üzerinde Users tablosu oluşturulmuştur. Her kullanıcı şu alanlarla saklanmaktadır:
+
+Uygulama MySQL veritabanı kullanmaktadır. Sistemde 3 ana tablo bulunmaktadır:
+
+###  Users Tablosu
+Kullanıcı bilgilerini saklar.
 
 | Alan | Açıklama |
 |------|----------|
 | Id | Kullanıcı birincil anahtarı |
 | Name | Ad Soyad |
 | Email | Kullanıcı email adresi |
-| Phone | Telefon |
-| Password | Parola |
+| Phone | Telefon numarası |
+| PasswordHash | Parola |
+
+###  Appointments Tablosu
+Randevu kayıtlarını saklar.
+
+| Alan | Açıklama |
+|------|----------|
+| Id | Randevu birincil anahtarı |
+| CarPlate | Araç plakası |
+| ServiceType | Hizmet türü |
+| AppointmentTime | Randevu tarihi ve saati |
+| CarWashName | Şube adı |
+| Status | Durum (Beklemede, Onaylandı, Reddedildi) |
+| Price | Hizmet fiyatı (₺) |
+| UserId | İlişkili kullanıcı ID  |
+
+###  Admins Tablosu
+Oto yıkama yöneticilerini saklar.
+
+| Alan | Açıklama |
+|------|----------|
+| Id | Admin birincil anahtarı |
+| Name | Yönetici adı |
+| Email | Email adresi |
+| PasswordHash | Parola |
+| BranchName | Yönettiği bayi adı |
+
+---
+
+Kopyala yapıştır hazır! 📋
 
 #### API Sistemi
 Kullanıcı kayıt ve giriş işlemleri REST API üzerinden gerçekleşir. Swagger UI ile bu endpointler kolayca test edilebilmektedir.
