@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self CarWash - Profil</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/profil.css">
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="nav-left">
+                <span class="logo">Self CarWash</span>
+            </div>
+            <nav class="nav-links">
+                <a href="home.html">Ana Sayfa</a>
+                <a href="randevular.html">Randevularım</a>
+                <a href="profil.html">Profil</a>
+            </nav>
+            <div class="nav-right">
+                <span class="nav-user">Hoş geldin, <span id="welcomeUser">Kullanıcı</span></span>
+                <button class="btn-outline" onclick="logout()">Çıkış Yap</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profil İçeriği -->
+    <div class="profil-container">
+        <div class="profil-card">
+            <h2>Profil Bilgileri</h2>
+            <h3 id="userName">Ad: </h3>
+            <p id="userEmail">E-posta: </p>
+            <p id="userPhone">Telefon: </p>
+            <button class="logout-btn" id="logoutBtn">Çıkış Yap</button>
+        </div>
+    </div>
+
+    <!-- Alt kısım -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <span>© 2024 Self CarWash. Tüm hakları saklıdır.</span>
+            <span class="footer-links">
+                <a href="#">Gizlilik</a>
+                <a href="#">Şartlar</a>
+            </span>
+        </div>
+    </footer>
+
+    <script src="js/profil.js"></script>
+</body>
+</html>

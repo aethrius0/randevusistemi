@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self CarWash - Admin Girişi</title>
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .admin-login-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-login-card h1 {
+            text-align: center;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+        }
+
+        .admin-login-card .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #1e3a5f;
+            box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #1e3a5f, #0f172a);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+        }
+
+        .error-message {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: #1e3a5f;
+        }
+
+        .logo-admin {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-admin span {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-login-card">
+            <div class="logo-admin">
+                <span>🔐</span>
+            </div>
+            <div style="text-align: center;">
+                <span class="admin-badge">ADMİN PANELİ</span>
+            </div>
+            <h1>Self CarWash</h1>
+            <p class="subtitle">Şube yönetim paneline giriş yapın</p>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="email">📧 E-posta</label>
+                    <input type="email" id="email" name="email" placeholder="admin@selfcarwash.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">🔒 Şifre</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="login-btn">Giriş Yap</button>
+            </form>
+
+            <a href="login.html" class="back-link">← Müşteri girişine dön</a>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "https://localhost:7041/api";
+
+        document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            const errorDiv = document.getElementById("errorMessage");
+            errorDiv.style.display = "none";
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const res = await fetch(`${API_URL}/admin/login`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+                
+                if (!res.ok) {
+                    throw new Error(data.message || "Giriş başarısız");
+                }
+
+                // Admin bilgisini kaydet
+                localStorage.setItem("admin", JSON.stringify(data));
+                window.location.href = "admin-panel.html";
+            } catch (err) {
+                errorDiv.textContent = err.message;
+                errorDiv.style.display = "block";
+            }
+        });
+
+        // Zaten giriş yapmışsa panele yönlendir
+        if (localStorage.getItem("admin")) {
+            window.location.href = "admin-panel.html";
+        }
+    </script>
+</body>
+</html>

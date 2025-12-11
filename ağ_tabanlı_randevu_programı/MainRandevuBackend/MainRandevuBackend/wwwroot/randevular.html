@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self CarWash - Randevularım</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/randevular.css">
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="nav-left">
+                <span class="logo">Self CarWash</span>
+            </div>
+            <nav class="nav-links">
+                <a href="home.html">Ana Sayfa</a>
+                <a href="randevular.html">Randevularım</a>
+                <a href="profil.html">Profil</a>
+            </nav>
+            <div class="nav-right">
+                <span class="nav-user">Hoş geldin, <span id="welcomeUser">Kullanıcı</span></span>
+                <button class="btn-outline" onclick="logout()">Çıkış Yap</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Randevu İçeriği -->
+    <div class="randevu-container">
+        <div class="randevu-header">
+            <div class="randevu-header-content">
+                <h1>Randevularım</h1>
+                <p>Araç yıkama randevularınızı oluşturun ve yönetin</p>
+            </div>
+        </div>
+        <br> <br> <br>
+
+        <!-- Oto Yıkamacı Seçimi -->
+        <div class="randevu-section" id="carWashSection">
+            <div class="section-header">
+                <h2>🏢 Oto Yıkamacı Seçin</h2>
+            </div>
+            
+            <div class="carwash-grid">
+                <div class="carwash-card" onclick="selectCarWash('Self CarWash Şanlıurfa')">
+                    <img src="images/carwash.jpg" alt="Self CarWash" class="carwash-image">
+                    <div class="carwash-info">
+                        <h3>Self CarWash Şanlıurfa</h3>
+                        <p>📍 Şanlıurfa</p>
+                        <span class="carwash-rating">⭐ 4.8</span>
+                    </div>
+                </div>
+                <div class="carwash-card" onclick="selectCarWash('Self CarWash Tekirdağ')">
+                    <img src="images/carwash2.jpg" alt="Self CarWash" class="carwash-image">
+                    <div class="carwash-info">
+                        <h3>Self CarWash Tekirdağ</h3>
+                        <p>📍 Tekirdağ</p>
+                        <span class="carwash-rating">⭐ 4.6</span>
+                    </div>
+                </div>
+                <div class="carwash-card" onclick="selectCarWash('Self CarWash İstanbul')">
+                    <img src="images/carwash3.jpg" alt="Self CarWash" class="carwash-image">
+                    <div class="carwash-info">
+                        <h3>Self CarWash İstanbul</h3>
+                        <p>📍 İstanbul</p>
+                        <span class="carwash-rating">⭐ 4.9</span>
+                    </div>
+                </div>
+                <div class="carwash-card" onclick="selectCarWash('Self CarWash Ankara')">
+                    <img src="images/carwash4.jpg" alt="Self CarWash" class="carwash-image">
+                    <div class="carwash-info">
+                        <h3>Self CarWash Ankara</h3>
+                        <p>📍 Ankara</p>
+                        <span class="carwash-rating">⭐ 4.7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Randevu Listesi -->
+        <div class="randevu-section">
+            <div class="section-header">
+                <h2>📋 Mevcut Randevularım</h2>
+                <span class="randevu-badge" id="randevuCount">0 Randevu</span>
+            </div>
+
+            <div id="randevuList" class="randevu-listesi"></div>
+        </div>
+    </div>
+
+    <!-- Alt kısım -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <span>© 2024 Self CarWash. Tüm hakları saklıdır.</span>
+            <span class="footer-links">
+                <a href="#">Gizlilik</a>
+                <a href="#">Şartlar</a>
+            </span>
+        </div>
+    </footer>
+
+    <!-- Randevu Oluşturma Modalı -->
+    <div class="create-modal-overlay" id="createModal">
+        <div class="create-modal-panel">
+            <button class="create-modal-close" onclick="closeCreateModal()">×</button>
+            
+            <!-- Sol Taraf: Oto Yıkamacı Bilgileri -->
+            <div class="create-modal-left">
+                <img src="" alt="Self CarWash" class="create-modal-image" id="createModalImage">
+                <div class="create-modal-info">
+                    <h2 id="createModalName">Self CarWash</h2>
+                    <p class="create-modal-location" id="createModalLocation">📍 Konum</p>
+                    <div class="create-modal-rating" id="createModalRating">⭐ 4.8</div>
+                    <div class="create-modal-features">
+                        <span class="feature-tag">🚿 Self Servis</span>
+                        <span class="feature-tag">🧽 Detaylı Yıkama</span>
+                        <span class="feature-tag">💎 Seramik Kaplama</span>
+                    </div>
+                    <p class="create-modal-desc">Profesyonel ekipmanlar ve kaliteli hizmet ile aracınıza en iyi bakımı sunuyoruz.</p>
+                </div>
+            </div>
+            
+            <!-- Sağ Taraf: Randevu Formu -->
+            <div class="create-modal-right">
+                <div class="create-modal-form-header">
+                    <h3>📅 Randevu Oluştur</h3>
+                    <p>Aşağıdaki bilgileri doldurarak randevunuzu oluşturun</p>
+                </div>
+                
+                <form class="create-modal-form" id="randevuForm">
+                    <input type="hidden" id="carWashName" value="">
+                    
+                    <div class="form-group">
+                        <label for="carPlate">🚗 Araç Plakası</label>
+                        <input type="text" id="carPlate" placeholder="34 ABC 123" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceType">✨ Hizmet Türü</label>
+                        <select id="serviceType" required onchange="onServiceChange()">
+                            <option value="">Hizmet Seçin</option>
+                        </select>
+                        <div class="price-display">
+                            <span class="price-label">Ücret:</span>
+                            <span class="price-value" id="selectedPrice">Hizmet seçin</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointmentDate">📅 Tarih</label>
+                            <input type="date" id="appointmentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointmentHour">🕐 Saat</label>
+                            <select id="appointmentHour" required>
+                                <option value="">Saat Seçin</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:30">09:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="create-modal-submit">
+                        ➕ Randevu Oluştur
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Düzenleme Modalı -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h3>✏️ Randevu Düzenle</h3>
+                <button class="modal-close" onclick="closeEditModal()">×</button>
+            </div>
+            <form id="editForm" class="modal-form">
+                <input type="hidden" id="editAppointmentId">
+                
+                <div class="form-group">
+                    <label for="editCarWashName">🏢 Oto Yıkamacı</label>
+                    <select id="editCarWashName" required onchange="onEditCarWashChange()">
+                        <option value="">Oto Yıkamacı Seçin</option>
+                        <option value="Self CarWash Şanlıurfa">Self CarWash Şanlıurfa</option>
+                        <option value="Self CarWash Tekirdağ">Self CarWash Tekirdağ</option>
+                        <option value="Self CarWash İstanbul">Self CarWash İstanbul</option>
+                        <option value="Self CarWash Ankara">Self CarWash Ankara</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editCarPlate">🚗 Araç Plakası</label>
+                    <input type="text" id="editCarPlate" placeholder="34 ABC 123" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editServiceType">✨ Hizmet Türü</label>
+                    <select id="editServiceType" required onchange="onEditServiceChange()">
+                        <option value="">Hizmet Seçin</option>
+                    </select>
+                    <div class="price-display">
+                        <span class="price-label">Ücret:</span>
+                        <span class="price-value" id="editSelectedPrice">Hizmet seçin</span>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editDate">📅 Randevu Tarihi</label>
+                        <input type="date" id="editDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editHour">🕐 Randevu Saati</label>
+                        <select id="editHour" required>
+                            <option value="">Saat Seçin</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                            <option value="17:30">17:30</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeEditModal()">İptal</button>
+                    <button type="submit" class="btn-save">💾 Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/randevular.js"></script>
+</body>
+</html>

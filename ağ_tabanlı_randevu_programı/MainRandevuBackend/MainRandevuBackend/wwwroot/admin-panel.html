@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self CarWash - Admin Panel</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">🚿</span>
+            <h2>Self CarWash</h2>
+            <p class="branch-name" id="branchName">Şube Adı</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-tab="appointments">
+                <span class="nav-icon">📋</span>
+                <span>Randevular</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="customers">
+                <span class="nav-icon">👥</span>
+                <span>Müşteriler</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="profile">
+                <span class="nav-icon">👤</span>
+                <span>Profil</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()">
+                <span>🚪</span> Çıkış Yap
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <h1 id="pageTitle">Randevular</h1>
+            <div class="header-right">
+                <span class="admin-name" id="adminName">Admin</span>
+            </div>
+        </header>
+
+        <!-- Randevular Tab -->
+        <section class="tab-content active" id="appointmentsTab">
+            <!-- Filtreler -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="Beklemede">⏳ Beklemede</button>
+                <button class="filter-btn" data-filter="Onaylandı">✅ Onaylandı</button>
+                <button class="filter-btn" data-filter="Reddedildi">❌ Reddedildi</button>
+            </div>
+
+            <!-- İstatistikler -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalAppointments">0</span>
+                        <span class="stat-label">Toplam Randevu</span>
+                    </div>
+                </div>
+                <div class="stat-card pending">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="pendingAppointments">0</span>
+                        <span class="stat-label">Beklemede</span>
+                    </div>
+                </div>
+                <div class="stat-card approved">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="approvedAppointments">0</span>
+                        <span class="stat-label">Onaylandı</span>
+                    </div>
+                </div>
+                <div class="stat-card rejected">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="rejectedAppointments">0</span>
+                        <span class="stat-label">Reddedildi</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Randevu Listesi -->
+            <div class="appointments-list" id="appointmentsList">
+                <p class="loading">Yükleniyor...</p>
+            </div>
+        </section>
+
+        <!-- Müşteriler Tab -->
+        <section class="tab-content" id="customersTab">
+            <div class="customers-list" id="customersList">
+                <p class="loading">Yükleniyor...</p>
+            </div>
+        </section>
+
+        <!-- Profil Tab -->
+        <section class="tab-content" id="profileTab">
+            <div class="profile-card">
+                <div class="profile-avatar">👤</div>
+                <h2 id="profileName">Admin Adı</h2>
+                <p id="profileEmail">admin@email.com</p>
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-label">Şube</span>
+                        <span class="info-value" id="profileBranch">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

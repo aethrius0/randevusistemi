@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self CarWash - Giriş Yap</title>
+    <link rel="stylesheet" href="/css/site.css">
+
+</head>
+<body>
+    <main class="auth-container">
+        <!-- Login Form -->
+        <section id="loginForm" class="form-section">
+            <h1 class="logo">Self CarWash</h1>
+            <p class="subtitle">Araba Yıkama Randevu Sistemi</p>
+
+            <div id="errorMessage" class="message error hidden"></div>
+
+            <form id="login" class="form">
+                <div class="form-group">
+                    <label for="email">E-posta</label>
+                    <input type="email" id="email" placeholder="ornek@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-actions">
+                    <a href="#" class="forgot">Şifremi Unuttum</a>
+                </div>
+
+                <button type="submit" class="btn-primary">Giriş Yap</button>
+            </form>
+
+            <p class="switch-form">
+                Hesabın yok mu? <a href="#" id="toRegister">Kayıt Ol</a>
+            </p>
+        </section>
+
+        <!-- Register Form -->
+        <section id="registerForm" class="form-section hidden">
+            <button id="toLogin" class="back-btn">←</button>
+            <h1 class="logo">Kayıt Ol</h1>
+            <p class="subtitle">Yeni hesap oluştur</p>
+
+            <div id="registerError" class="message error hidden"></div>
+            <div id="registerSuccess" class="message success hidden"></div>
+
+            <form id="register" class="form">
+                <div class="form-group">
+                    <label for="regName">Ad Soyad</label>
+                    <input type="text" id="regName" placeholder="Ahmet Yılmaz" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">E-posta</label>
+                    <input type="email" id="regEmail" placeholder="ornek@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPhone">Telefon</label>
+                    <input type="tel" id="regPhone" placeholder="0555 123 4567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword">Şifre</label>
+                    <input type="password" id="regPassword" placeholder="••••••••" required minlength="6">
+                </div>
+
+                <button type="submit" class="btn-primary">Kayıt Ol</button>
+            </form>
+
+            <p class="switch-form">
+                Zaten hesabın var mı? <a href="#" id="toLoginLink">Giriş Yap</a>
+            </p>
+        </section>
+
+        <!-- Şifremi Unuttum Form -->
+        <section id="forgotForm" class="form-section hidden">
+            <button id="forgotToLogin" class="back-btn">←</button>
+            <h1 class="logo">Şifre Sıfırla</h1>
+            <p class="subtitle">Yeni şifrenizi belirleyin</p>
+
+            <div id="forgotError" class="message error hidden"></div>
+            <div id="forgotSuccess" class="message success hidden"></div>
+
+            <form id="forgotPassword" class="form">
+                <div class="form-group">
+                    <label for="forgotEmail">E-posta</label>
+                    <input type="email" id="forgotEmail" placeholder="ornek@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">Yeni Şifre</label>
+                    <input type="password" id="newPassword" placeholder="••••••••" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Yeni Şifre (Tekrar)</label>
+                    <input type="password" id="confirmPassword" placeholder="••••••••" required minlength="6">
+                </div>
+
+                <button type="submit" class="btn-primary">Şifremi Güncelle</button>
+            </form>
+
+            <p class="switch-form">
+                Şifreni hatırladın mı? <a href="#" id="forgotToLoginLink">Giriş Yap</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="/js/auth.js"></script>
+</body>
+</html>

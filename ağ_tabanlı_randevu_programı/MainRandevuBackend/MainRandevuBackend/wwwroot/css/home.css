@@ -1,0 +1,435 @@
+﻿/* GENEL RESET / BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #bae6fd 0%, #e0f2fe 20%, #f0f9ff 50%, #e0f2fe 80%, #bae6fd 100%);
+    background-attachment: fixed;
+    color: #111827;
+    min-height: 100vh;
+}
+
+/* LİNKLER */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* KAPSAYICI */
+.container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(16px);
+    color: #f9fafb;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.6);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #38bdf8;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+    font-size: 0.95rem;
+    color: #e5e7eb;
+}
+
+    .nav-links a {
+        opacity: 0.9;
+        padding: 6px 10px;
+        border-radius: 999px;
+        transition: background 0.15s ease, opacity 0.15s ease;
+    }
+
+        .nav-links a:hover {
+            background: rgba(148, 163, 184, 0.24);
+            opacity: 1;
+        }
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.nav-user {
+    color: #cbd5f5;
+}
+
+/* BUTONLAR */
+.btn-primary,
+.btn-secondary,
+.btn-outline {
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    color: #f9fafb;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.40);
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #0284c7, #1e40af);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.55);
+    }
+
+.btn-secondary {
+    background: #e0f2fe;
+    color: #075985;
+    border: 1px solid #bae6fd;
+}
+
+    .btn-secondary:hover {
+        background: #bfdbfe;
+        transform: translateY(-1px);
+    }
+
+.btn-outline {
+    background: transparent;
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    padding-inline: 14px;
+}
+
+    .btn-outline:hover {
+        background: rgba(148, 163, 184, 0.18);
+        color: #f9fafb;
+    }
+
+/* HERO BÖLÜMÜ */
+.hero {
+    padding: 48px 0 40px 0;
+    background: radial-gradient(circle at top left, #0ea5e930 0, transparent 45%), radial-gradient(circle at bottom right, #6366f130 0, transparent 50%), #020617;
+    color: #f9fafb;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+    gap: 32px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: clamp(2.1rem, 3vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 14px;
+}
+
+.hero-text p {
+    font-size: 0.98rem;
+    color: #cbd5f5;
+    max-width: 480px;
+    margin-bottom: 22px;
+}
+
+.hero-text .btn-primary {
+    padding-inline: 22px;
+}
+
+/* HERO BİLGİ ÇİZGİSİ (İSTERSEN EKLERSİN) */
+.hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #e5e7eb;
+}
+
+/* HERO GÖRSEL BLOĞU */
+.hero-image {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.hero-placeholder {
+    width: 100%;
+    min-height: 350px;
+    border-radius: 18px;
+    background: radial-gradient(circle at top, #1d4ed8 0, #020617 55%);
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7), 0 0 0 1px rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    font-size: 0.95rem;
+    overflow: hidden;
+}
+
+/* ANA BÖLÜM */
+.section {
+    padding: 38px 0 60px 0;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+    color: #0f172a;
+}
+
+/* KART GRID */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px 16px 18px 16px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(229, 231, 235, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), transparent 45%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+    }
+
+    .card:hover::before {
+        opacity: 1;
+    }
+
+    .card h3 {
+        font-size: 1.03rem;
+        margin-bottom: 4px;
+        color: #0f172a;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+        color: #4b5563;
+    }
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 0.88rem;
+    color: #6b7280;
+}
+
+.price {
+    font-weight: 600;
+    color: #0f766e;
+}
+
+/* FOOTER */
+.footer {
+    background: #020617;
+    color: #9ca3af;
+    padding: 14px 0;
+    border-top: 1px solid #111827;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.footer-links a {
+    margin-left: 14px;
+    color: #e5e7eb;
+    opacity: 0.8;
+    font-size: 0.85rem;
+}
+
+    .footer-links a:hover {
+        opacity: 1;
+    }
+
+/* RESPONSIVE / MOBİL */
+@media (max-width: 900px) {
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-text {
+        order: 1;
+    }
+
+    .hero-image {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* basit çözüm: mobilde navbarı sadeleştir */
+    }
+
+    .nav-right .nav-user {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 30px;
+    }
+
+    .navbar {
+        padding-inline: 0;
+    }
+
+    .card-grid {
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .card {
+        padding: 14px;
+    }
+}
+
+/* TÜRKİYE HARİTASI */
+.turkey-map {
+    width: 100%;
+    height: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.2);
+    border: 3px solid #e0f2fe;
+}
+
+/* Özel Marker */
+.custom-marker {
+    background: transparent;
+    border: none;
+}
+
+.marker-pin {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+    font-size: 18px;
+    border: 2px solid #fff;
+}
+
+.marker-pin::after {
+    content: '🚗';
+    transform: rotate(45deg);
+}
+
+/* Harita Popup */
+.map-popup {
+    text-align: center;
+    padding: 5px;
+}
+
+.map-popup h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.map-popup p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.popup-btn {
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.popup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+}
+
+/* Leaflet popup özelleştirme */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-tip {
+    background: #fff;
+}

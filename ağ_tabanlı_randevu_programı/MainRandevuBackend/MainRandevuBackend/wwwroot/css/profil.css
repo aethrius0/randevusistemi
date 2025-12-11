@@ -1,0 +1,164 @@
+﻿/* PROFIL SAYFASI GENEL YERLEŞIMI */
+.profil-container {
+    min-height: calc(100vh - 70px);
+    padding: 40px 16px 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #bae6fd 0%, #e0f2fe 20%, #f0f9ff 50%, #e0f2fe 80%, #bae6fd 100%);
+    background-attachment: fixed;
+}
+
+/* KART */
+.profil-card {
+    background: #ffffff;
+    padding: 28px 26px 26px;
+    border-radius: 18px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9);
+    max-width: 460px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+    .profil-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), transparent 50%);
+        pointer-events: none;
+    }
+
+    .profil-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .profil-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #0f172a;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .profil-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+        margin-top: 12px;
+        color: #111827;
+        font-weight: 700;
+    }
+
+    .profil-card p {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+        color: #4b5563;
+        line-height: 1.6;
+    }
+
+/* ÇIKIŞ BUTONU */
+.logout-btn {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 999px;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: #fef2f2;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.40);
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+    .logout-btn:hover {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(239, 68, 68, 0.55);
+    }
+
+/* ALT NAVBAR (BOTTOM NAV) */
+.bottom-nav {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(16px);
+    border-radius: 999px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.75), 0 0 0 1px rgba(30, 64, 175, 0.4);
+    padding: 8px 14px;
+    display: flex;
+    gap: 8px;
+    z-index: 30;
+}
+
+.nav-item {
+    padding: 8px 16px 6px;
+    border-radius: 999px;
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    opacity: 0.9;
+}
+
+    .nav-item span {
+        font-size: 0.72rem;
+        font-weight: 500;
+    }
+
+    .nav-item:hover {
+        background: rgba(148, 163, 184, 0.24);
+        transform: translateY(-1px);
+        opacity: 1;
+    }
+
+    .nav-item.active {
+        background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+        color: #f9fafb;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.6);
+        opacity: 1;
+    }
+
+/* MOBIL ICIN KÜÇÜK AYARLAR */
+@media (max-width: 768px) {
+    .profil-container {
+        padding: 30px 12px 100px;
+    }
+
+    .bottom-nav {
+        width: calc(100% - 32px);
+        padding-inline: 12px;
+    }
+
+    .nav-item {
+        flex: 1;
+        padding-inline: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profil-card {
+        padding: 24px 20px 20px;
+    }
+
+        .profil-card h2 {
+            font-size: 1.3rem;
+        }
+
+    .nav-item {
+        font-size: 0.75rem;
+    }
+
+        .nav-item span {
+            font-size: 0.68rem;
+        }
+}

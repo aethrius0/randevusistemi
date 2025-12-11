@@ -1,0 +1,938 @@
+﻿/* RANDEVU SAYFASI GENEL YERLEŞIMI */
+.randevu-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 16px 60px;
+    min-height: calc(100vh - 140px);
+}
+
+    .randevu-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #0f172a;
+        font-weight: 700;
+    }
+
+/* FORM KARTI */
+.randevu-form {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .randevu-form::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), transparent 45%);
+        pointer-events: none;
+    }
+
+    /* INPUT VE SELECT STILI */
+    .randevu-form input,
+    .randevu-form select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        background: #f9fafb;
+        color: #111827;
+        position: relative;
+        z-index: 1;
+    }
+
+        .randevu-form input:focus,
+        .randevu-form select:focus {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+            background: #ffffff;
+        }
+
+    .randevu-form select {
+        cursor: pointer;
+    }
+
+/* RANDEVU OLUŞTUR BUTONU */
+.randevu-btn {
+    margin-top: 6px;
+    align-self: flex-end;
+    border-radius: 999px;
+    padding: 9px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    color: #f9fafb;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.40);
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+    position: relative;
+    z-index: 1;
+}
+
+    .randevu-btn:hover {
+        background: linear-gradient(135deg, #0284c7, #1e40af);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.55);
+    }
+
+/* RANDEVU LISTESI */
+.randevu-listesi {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* TEK RANDEVU KARTI */
+.randevu-kart,
+.randevu-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(229, 231, 235, 0.9);
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .randevu-kart::before,
+    .randevu-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), transparent 45%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+    }
+
+    .randevu-kart:hover::before,
+    .randevu-item:hover::before {
+        opacity: 1;
+    }
+
+    .randevu-kart:hover,
+    .randevu-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(229, 231, 235, 0.9);
+    }
+
+.randevu-kart-ust {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.randevu-kart-baslik {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 1rem;
+}
+
+.randevu-kart-detay {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-top: 2px;
+}
+
+.randevu-kart-zaman {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* RANDEVU KART OTO YIKAMACI */
+.randevu-carwash {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0ea5e9;
+    background: #e0f2fe;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* RANDEVU HEADER ROW */
+.randevu-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* RANDEVU STATUS */
+.randevu-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.status-beklemede {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-onaylandi {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-reddedildi {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* RANDEVU BUTONLARI */
+.randevu-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+    .randevu-buttons button {
+        flex: 1;
+        border-radius: 999px;
+        padding: 7px 12px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+        .randevu-buttons button:first-child {
+            background: #e0f2fe;
+            color: #075985;
+            border: 1px solid #bae6fd;
+        }
+
+            .randevu-buttons button:first-child:hover {
+                background: #bfdbfe;
+                transform: translateY(-1px);
+            }
+
+        .randevu-buttons button:last-child {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+            .randevu-buttons button:last-child:hover {
+                background: #fecaca;
+                transform: translateY(-1px);
+            }
+
+/* SİL BUTONU (TEKİL) */
+.randevu-sil-btn {
+    align-self: flex-end;
+    margin-top: 6px;
+    border-radius: 999px;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+    .randevu-sil-btn:hover {
+        background: #fecaca;
+        transform: translateY(-1px);
+    }
+
+/* OTO YIKAMACI SEÇİMİ */
+.carwash-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.carwash-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 0;
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.1);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.carwash-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.carwash-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+    border-color: #0ea5e9;
+}
+
+.carwash-card:hover::before {
+    opacity: 1;
+}
+
+.carwash-image {
+    width: 130px;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 14px 0 0 14px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.carwash-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+}
+
+.carwash-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.carwash-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.carwash-card p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.carwash-rating {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+/* SEÇİLEN OTO YIKAMACI BİLGİSİ */
+.selected-carwash {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #bae6fd;
+}
+
+.carwash-label {
+    font-size: 0.9rem;
+    color: #0369a1;
+}
+
+.carwash-name {
+    font-weight: 700;
+    color: #0c4a6e;
+    font-size: 1rem;
+}
+
+/* GERİ BUTONU */
+.back-btn {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #4b5563;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.back-btn:hover {
+    background: #e5e7eb;
+}
+
+/* SECTION HEADER */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+/* RANDEVU SECTION ARASI BOŞLUK */
+.randevu-section {
+    margin-bottom: 32px;
+}
+
+/* RESPONSIVE / MOBİL */
+@media (max-width: 768px) {
+    .randevu-container {
+        padding: 30px 12px 60px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-right .nav-user {
+        display: none;
+    }
+    
+    .carwash-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .randevu-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .randevu-form {
+        padding: 16px;
+    }
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MODAL PANEL */
+.modal-panel {
+    background: #ffffff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.25s ease;
+    overflow: hidden;
+}
+
+.modal-overlay.active .modal-panel {
+    transform: translateY(0) scale(1);
+}
+
+/* MODAL HEADER */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    color: #fff;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* MODAL FORM */
+.modal-form {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-form .form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.modal-form .form-group input,
+.modal-form .form-group select {
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    background: #f9fafb;
+}
+
+.modal-form .form-group input:focus,
+.modal-form .form-group select:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    background: #ffffff;
+}
+
+.modal-form .form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.modal-form .form-row .form-group {
+    flex: 1;
+}
+
+/* MODAL BUTTONS */
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-cancel {
+    background: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+}
+
+.btn-cancel:hover {
+    background: #e5e7eb;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+}
+
+.btn-save:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+/* FORM ROW */
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+@media (max-width: 500px) {
+    .modal-form .form-row,
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+/* ===========================================
+   RANDEVU OLUŞTURMA MODALI (YENİ TASARIM)
+   =========================================== */
+
+.create-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+}
+
+.create-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.create-modal-panel {
+    background: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    box-shadow: 0 25px 80px rgba(15, 23, 42, 0.4);
+    transform: translateY(30px) scale(0.9);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.create-modal-overlay.active .create-modal-panel {
+    transform: translateY(0) scale(1);
+}
+
+.create-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: #374151;
+    font-size: 1.6rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.create-modal-close:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+    transform: rotate(90deg);
+}
+
+/* Sol Taraf - Oto Yıkamacı Bilgileri */
+.create-modal-left {
+    width: 45%;
+    background: linear-gradient(180deg, #0ea5e9 0%, #1d4ed8 100%);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.create-modal-left::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.create-modal-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.create-modal-info {
+    padding: 24px;
+    color: #ffffff;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.create-modal-info h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.create-modal-location {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.create-modal-rating {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    width: fit-content;
+    backdrop-filter: blur(4px);
+}
+
+.create-modal-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.feature-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.create-modal-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    line-height: 1.5;
+    margin: 0;
+    margin-top: auto;
+}
+
+/* Sağ Taraf - Randevu Formu */
+.create-modal-right {
+    width: 55%;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.create-modal-form-header {
+    margin-bottom: 24px;
+}
+
+.create-modal-form-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+}
+
+.create-modal-form-header p {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.create-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+}
+
+.create-modal-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.create-modal-form .form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.create-modal-form .form-group input,
+.create-modal-form .form-group select {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #f9fafb;
+}
+
+.create-modal-form .form-group input:focus,
+.create-modal-form .form-group select:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+    background: #ffffff;
+}
+
+.create-modal-form .form-row {
+    display: flex;
+    gap: 14px;
+}
+
+.create-modal-form .form-row .form-group {
+    flex: 1;
+}
+
+.create-modal-submit {
+    margin-top: auto;
+    padding: 16px 24px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    transition: all 0.2s ease;
+}
+
+.create-modal-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.55);
+}
+
+.create-modal-submit:active {
+    transform: translateY(0);
+}
+
+/* Responsive - Mobil Görünüm */
+@media (max-width: 768px) {
+    .create-modal-panel {
+        flex-direction: column;
+        max-height: 95vh;
+    }
+    
+    .create-modal-left {
+        width: 100%;
+    }
+    
+    .create-modal-image {
+        height: 150px;
+    }
+    
+    .create-modal-info {
+        padding: 16px;
+    }
+    
+    .create-modal-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .create-modal-right {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .create-modal-form .form-row {
+        flex-direction: column;
+    }
+}
+
+/* FİYAT GÖSTERİMİ */
+.price-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border-radius: 10px;
+    border: 1px solid #a7f3d0;
+}
+
+.price-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #065f46;
+}
+
+.price-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.price-value.has-price {
+    color: #059669;
+    font-size: 1.3rem;
+}
+
+/* RANDEVU FİYAT */
+.randevu-price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #059669;
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 6px;
+}

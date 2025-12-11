@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self CarWash - Araba Yıkama Randevu Sistemi</title>
+
+    <!-- ANA SAYFA TASARIMI BURADA -->
+    <link rel="stylesheet" href="css/home.css">
+    
+    <!-- Leaflet Harita Kütüphanesi -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="js/home.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="nav-left">
+                <span class="logo">Self CarWash</span>
+            </div>
+            <nav class="nav-links">
+                <a href="home.html">Ana Sayfa</a>
+                <a href="randevular.html">Randevularım</a>
+                <a href="profil.html">Profil</a>
+            </nav>
+            <div class="nav-right">
+                <span class="nav-user">Hoş geldin, <span id="welcomeUser">Kullanıcı</span></span>
+                <button class="btn-outline" onclick="logout()">Çıkış Yap</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Arabanı Yıkatmak Hiç Bu Kadar Kolay Olmamıştı</h1>
+                <p>
+                    Self CarWash ile oto yıkama noktalarını keşfet,
+                    uygun saati seç ve saniyeler içinde randevunu oluştur.
+                    İstersen kendin temizle, ister oto yıkamacıya bırak!
+                    Burada her şey senin konforun için tasarlandı.
+                </p>
+                <button class="btn-primary" onclick="window.location.href='randevular.html'">
+                    Hemen Randevu Al
+                </button>
+            </div>
+            <div class="hero-image">
+                <!-- Türkiye Haritası - Oto Yıkama Noktaları -->
+                <div id="turkeyMap" class="turkey-map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İçerik: kartlar -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Self CarWash Lisanslı Yıkama Noktaları</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Self CarWash Şanlıurfa</h3>
+                    <p>Profesyonel iç-dış yıkama, detaylı temizlik.</p>
+                    <div class="card-meta">
+                        <span>854.1 km</span>
+                        <span class="price">₺150'den başlayan fiyatlarla..</span>
+                    </div>
+                    <button class="btn-secondary" onclick="goToAppointment('Self CarWash Şanlıurfa')">
+                        Randevu Al
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>Self CarWash Tekirdağ</h3>
+                    <p>Standart yıkama, cilalama ve jant temizliği.</p>
+                    <div class="card-meta">
+                        <span>592.2 km</span>
+                        <span class="price">₺180'den başlayan fiyatlarla..</span>
+                    </div>
+                    <button class="btn-secondary" onclick="goToAppointment('Self CarWash Tekirdağ')">
+                        Randevu Al
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>Self CarWash İstanbul</h3>
+                    <p>Hızlı dış yıkama, yoğun günler için ideal.</p>
+                    <div class="card-meta">
+                        <span>444.7 km</span>
+                        <span class="price">₺200'den başlayan fiyatlarla..</span>
+                    </div>
+                    <button class="btn-secondary" onclick="goToAppointment('Self CarWash İstanbul')">
+                        Randevu Al
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>Self CarWash Ankara</h3>
+                    <p>Premium yıkama ve bakım hizmetleri.</p>
+                    <div class="card-meta">
+                        <span>13.55 km</span>
+                        <span class="price">₺170'den başlayan fiyatlarla..</span>
+                    </div>
+                    <button class="btn-secondary" onclick="goToAppointment('Self CarWash Ankara')">
+                        Randevu Al
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alt kısım -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <span>© 2024 Self CarWash. Tüm hakları saklıdır.</span>
+            <span class="footer-links">
+                <a href="#">Gizlilik</a>
+                <a href="#">Şartlar</a>
+            </span>
+        </div>
+    </footer>
+
+</body>
+</html>
