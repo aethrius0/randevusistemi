@@ -109,8 +109,6 @@ Oto yıkama yöneticilerini saklar.
 
 ---
 
-Kopyala yapıştır hazır! 📋
-
 #### API Sistemi
 Kullanıcı kayıt ve giriş işlemleri REST API üzerinden gerçekleşir. Swagger UI ile bu endpointler kolayca test edilebilmektedir.
 
