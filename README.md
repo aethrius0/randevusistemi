@@ -1,3 +1,5 @@
+Yukarıdan ağ_tabanlı_randevu_programı klasörüne tıklayarak güncel koda erişebilirsiniz.
+
 # AutoWash - Randevu & Rezervasyon Sistemi
 
 Bu proje, araç yıkama randevu sistemini hem web hem de mobil platformda yönetmek amacıyla geliştirilmiştir. Kullanıcılar kayıt olabilir, giriş yapabilir, hizmete ve fiyata bağlı uygun tarih/saat seçerek randevu oluşturabilir.
